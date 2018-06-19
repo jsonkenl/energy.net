@@ -1,0 +1,8 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.1.1",
+    "bootswatch": "4.1.1"
+  }
+}
