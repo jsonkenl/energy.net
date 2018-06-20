@@ -1,0 +1,48 @@
+﻿<nav id="navMain" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+        @{
+            if (ViewData["Header"] != null)
+            {
+                <span>@ViewData["Header"]</span>
+            }
+            else
+            {
+                <i class="fas fa-burn fa-2x"></i>
+                <span id="logoText">Energy.NET</span>
+            }
+        }
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" id="quicklinksNavbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Quicklinks <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="quicklinksNavbarDropdown">
+                    <a href="#" class="dropdown-item">Calendar</a>
+                    <a href="#" class="dropdown-item">Employee Directory</a>
+                    <a href="#" class="dropdown-item">News Archive</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" id="departmentsNavbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Departments <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="departmentsNavbarDropdown">
+                    <a href="#" class="dropdown-item">Accounting</a>
+                    <a href="#" class="dropdown-item">Human Resources</a>
+                    <a href="#" class="dropdown-item">Information Technology</a>
+                    <a href="#" class="dropdown-item">Operations</a>
+                </div>
+            </li>
+            @await Html.PartialAsync("_NavigationLoginPartial")
+        </ul>
+    </div>
+</nav>
