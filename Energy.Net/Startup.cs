@@ -1,3 +1,4 @@
+using Energy.Core.Interfaces;
 using Energy.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,11 +13,11 @@ namespace Energy.Net
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
-            CurrentEnvironment = env;
+            _currentEnvironment = env;
         }
 
         public IConfiguration Configuration { get; }
-        private IHostingEnvironment CurrentEnvironment { get; }
+        private IHostingEnvironment _currentEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -37,15 +38,13 @@ namespace Energy.Net
                 });
 
             // DbContext Setup and Implementation
-            if (CurrentEnvironment.IsDevelopment())
+            if (_currentEnvironment.IsDevelopment())
             {
-                services.AddDbContext<EnergyDotNetDbContext>(
-                    options => options.UseSqlServer(Configuration.GetConnectionString("EnergyDotNet_Dev")));
+                InitiateDatabaseAccess(services, "EnergyDotNet_Dev");
             }
             else
             {
-                services.AddDbContext<EnergyDotNetDbContext>(
-                    options => options.UseSqlServer(Configuration.GetConnectionString("EnergyDotNet")));
+                InitiateDatabaseAccess(services, "EnergyDotNet");
             }
 
         }
@@ -53,7 +52,7 @@ namespace Energy.Net
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            if (CurrentEnvironment.IsDevelopment())
+            if (_currentEnvironment.IsDevelopment())
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
@@ -71,6 +70,14 @@ namespace Energy.Net
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void InitiateDatabaseAccess(IServiceCollection services, string databaseName)
+        {
+            services.AddDbContext<EnergyDotNetDbContext>(
+                    options => options.UseSqlServer(Configuration.GetConnectionString(databaseName)));
+
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Energy.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Energy.Infrastructure
 {
@@ -9,5 +10,6 @@ namespace Energy.Infrastructure
         {
         }
 
+        public DbSet<Employee> Employees { get; set; }
     }
 }
