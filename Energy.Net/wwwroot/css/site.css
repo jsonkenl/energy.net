@@ -3,14 +3,119 @@
 **************************************/
 
 /* General */
+body {
+    padding-top: 65px;
+    padding-bottom: 32px;
+}
+
 #bodyWrapper a:hover,
 #bodyWrapper a:focus {
     color: #bababa;
 }
 
+.hide-page-load {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: white;
+}
+
+#infoAlert,
+#dangerAlert {
+    text-align: center;
+    margin: 20px auto -40px auto;
+    max-width: 70%;
+    opacity: .5;
+}
+
+/* Page Loader */
+#pageLoader {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    text-indent: -9000px;
+    z-index: 9;
+}
+
+#pageLoader::before {
+    content: '';
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    -webkit-animation: rotation .6s infinite linear;
+    -moz-animation: rotation .6s infinite linear;
+    -o-animation: rotation .6s infinite linear;
+    animation: rotation .6s infinite linear;
+    border-left: 6px solid rgba(255, 255, 255, .15);
+    border-right: 6px solid rgba(255, 255, 255, .15);
+    border-bottom: 6px solid rgba(255, 255, 255, .15);
+    border-top: 6px solid rgba(255, 255, 255, .8);
+    border-radius: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(359deg);
+    }
+}
+
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+
+    to {
+        -o-transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
 /* Nav and Footer Specific Styles */
 #navMain {
    padding: 8px 80px 6px 80px; 
+}
+
+@media screen and (max-width: 720px){
+    #navMain {
+        padding: 8px 15px 6px 15px;
+    }
 }
 
 #logoText {
@@ -34,3 +139,34 @@ li.nav-item.dropdown:hover > .dropdown-menu {
     font-size: 0.8rem;
 }
 
+#logoutButton {
+    color: #2c3e50; 
+    display: block;
+    border-radius: 0;
+}
+
+#logoutButton:hover {
+    color: #bababa; 
+}
+
+/* Vertically Center Modals on Page */
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.vertical-align-center {
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.modal-content {
+    width: inherit;
+    max-width: inherit;
+    height: inherit;
+    margin: 0 auto;
+    pointer-events: all;
+}

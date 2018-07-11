@@ -1,0 +1,129 @@
+﻿/**************************************
+ SESSION STYLES
+**************************************/
+
+/* Login */
+#loginWrapper {
+    margin-top: 70px;
+}
+
+.login-title {
+    color: #555;
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+}
+
+.account-wall {
+    min-width: 300px;
+    margin-top: 20px;
+    padding: 40px 0 20px 0;
+    background-color: #f1f1f1;
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #999;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="password"] {
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.need-help {
+    display: block;
+    margin-top: 10px;
+    color: #555;
+}
+
+.need-help:hover {
+    color: #a1a0a0;
+    text-decoration: none;
+}
+
+#LoginHelpModal a {
+    color: #3399f3;
+}
+
+/* Forbidden */
+.forbidden-title {
+    margin-top: 70px;
+    font-weight: bold;
+    font-size: 100px;
+    text-align: center;
+}
+
+.forbidden-message {
+}
+
+.forbidden-button {
+    margin: 40px auto 0 auto;
+    display: block;
+}
+
+.forbidden-img {
+    margin: 60px auto 40px auto;
+    display: block;
+    width: 640px;
+}
+
+.forbidden-button a {
+    color: #fff;
+}
+
+.forbidden-contact a {
+    color: #3399f3;
+}
+
+.forbidden-contact a:hover {
+    color: #c2c6c6;
+}
+
+/* Create Admin Password */
+#adminPasswordWrapper {
+    margin-top: 70px;
+}
+
+.create-admin-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+#adminPasswordWrapper .admin-email-placeholder {
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+}

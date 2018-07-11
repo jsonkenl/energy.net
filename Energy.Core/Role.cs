@@ -3,7 +3,7 @@
     public enum Role
     {
         Accounting,
-        Admin,
+        Administrator,
         HumanResources,
         InfoTech,
         NetContent,

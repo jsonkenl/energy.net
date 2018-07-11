@@ -1,0 +1,14 @@
+﻿@using Energy.Core;
+
+@{ 
+    Employee employee = ViewData["Employee"] as Employee;
+    string adminDn = ViewData["AdminDn"] as string;
+}
+
+<h1>@employee.FirstName @employee.LastName</h1>
+<ul>
+    <li>@employee.DistinguishedName</li>
+    <li>@employee.Email</li>
+    <li>@employee.Role</li>
+    <li>@adminDn</li>
+</ul>

@@ -10,6 +10,7 @@ namespace Energy.Infrastructure
         {
         }
 
+        public DbSet<Administrator> Administrators { get; set; }
         public DbSet<Employee> Employees { get; set; }
     }
 }

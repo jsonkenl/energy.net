@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "401";
+    string _adminEmail = ViewData["AdminEmail"] as string;
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="forbidden-title">Oops...</h1>
+    </div>
+    <div class="row justify-content-center">
+        <h4 class="forbidden-message">You do not have the proper permissions to view this page or perform this action.</h4>
+    </div>
+    <div class="row justify-content-center">
+        <h4 class="text-center">You can, however, check out this Dilbert cartoon.</h4>
+    </div>
+    <div class="row justify-content-center">
+        <div class="forbidden-button">
+            <button class="btn btn-info">
+                <a asp-controller="Home" asp-action="Index">Go Home</a>
+            </button>
+        </div>
+    </div>
+    <div class="forbidden-img">
+        <img src="~/images/unauthorized.jpg" />
+    </div>
+    <h5 class="forbidden-contact text-center">Please <a href='@string.Format("mailto:{0}?subject=Energy%2ENet%20User%20Access%20Issue", _adminEmail)'>contact</a> the site administrator if you feel you have reached this message in error.</h5>
+</div>

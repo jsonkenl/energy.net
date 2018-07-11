@@ -19,7 +19,7 @@
     <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a href="#" id="quicklinksNavbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +27,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="quicklinksNavbarDropdown">
                     <a href="#" class="dropdown-item">Calendar</a>
-                    <a href="#" class="dropdown-item">Employee Directory</a>
+                    <a class="dropdown-item" asp-controller="Employees" asp-action="Index">Employee Directory</a>
                     <a href="#" class="dropdown-item">News Archive</a>
                 </div>
             </li>

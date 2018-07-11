@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,15 +24,19 @@ namespace Energy.Core
         public string DistinguishedName { get; set; }
 
         [Required]
-        public IList<Role> Roles { get; set; }
+        public Role Role { get; set; }
 
         [Phone]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", 
+            ErrorMessage = "10 characters, no dashes or special characters")]
         public string Direct { get; set; }
 
         [Phone]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", 
+            ErrorMessage = "10 characters, no dashes or special characters")]
         public string Mobile { get; set; }
 
-        [DataType(DataType.ImageUrl)]
+        [DataType(DataType.ImageUrl), DisplayName("Image Path")]
         public string ImagePath { get; set; }
 
         [DataType(DataType.Date), DisplayName("Birthday")]

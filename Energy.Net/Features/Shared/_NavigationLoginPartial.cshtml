@@ -1,5 +1,42 @@
-﻿<li class="nav-item">
-    <a class="nav-link" href="#">Log In</a>
-</li>
+﻿@{ 
+    string _adminEmail = ViewData["AdminEmail"] as string;
+}
 
-@*TODO: logged in user logic and user options*@
+@if (User.Identity.IsAuthenticated)
+{
+    <form asp-controller="Session" asp-action="Logout" method="post" id="logoutForm">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    @User.Identity.Name <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">User Options</li>
+                    <li>
+                        <a href="" class="dropdown-item">
+                            Report an Issue
+                        </a>
+                    </li>
+
+                    <li role="separator" class="dropdown-divider"></li>
+                    <li class="dropdown-header">Add Content</li>
+
+                    <li role="separator" class="dropdown-divider"></li>
+                    <li class="dropdown-header">Admin Options</li>
+                    
+                    <li role="separator" class="dropdown-divider"></li>
+                    <li>
+                        <button id="logoutButton" type="submit" class="btn dropdown-item">Log Out</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Session" asp-action="Login">Log In</a>
+    </li>
+}
+

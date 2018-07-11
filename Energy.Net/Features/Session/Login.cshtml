@@ -1,0 +1,65 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Employee Login";
+    string _adminEmail = ViewData["AdminEmail"] as string;
+}
+
+<div id="loginWrapper" class="container">
+    <div class="row justify-content-center">
+        <h1 class="text-center login-title">Sign in to Energy.Net with your Windows Password</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="account-wall">
+                <img class="login-img" src="~/images/empty_user.png" alt="">
+
+                <form class="form-signin" method="post" asp-antiforgery="true">
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                    <div>
+                        <input class="form-control" asp-for="Email" placeholder="username@EnergyCo.net" required />
+                    </div>
+                    <div>
+                        <input class="form-control" asp-for="Password" placeholder="password" required />
+                    </div>
+                    <div>
+                        <input type="submit" value="Login" class="btn btn-lg btn-primary btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="row justify-content-center">
+                <a href="#LoginHelpModal" class="text-center need-help" data-target="#LoginHelpModal" data-toggle="modal">Need Help?</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="LoginHelpModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>Login Instructions</h3>
+                    <br />
+                    <p>
+                        Energy.Net requires users to be authenticated in order to access certain areas of the site. Access is determined based on the role
+                        that is assigned to the user by the administrator.
+                    </p>
+                    <p>
+                        First, enter the 'username' in the first box which is the EnergyCo email address of the user (i.e. username@energyco.net).
+                        Second, enter the user's password into the second box which is the same password that is used to log the user into their EnergyCo
+                        assigned Windows computer. Finally, click on the 'Login' button to proceed.
+                    </p>
+                    <p>
+                        Please <a href='@string.Format("mailto:{0}?subject=Energy%2ENet%20Login%20Issue", _adminEmail)'>contact the site administrator</a>
+                        if you do not have a EnergyCo assigned email address, feel you have not been assigned the proper role for access rights or
+                        have any other issues logging into the site.
+                    </p>
+                </div>
+                <div id="profile-modal-footer" class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

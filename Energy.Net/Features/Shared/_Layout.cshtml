@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootswatch/dist/flatly/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/session.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/lib/bootswatch/dist/flatly/bootstrap.min.css" />
@@ -15,8 +16,9 @@
     </environment>
 </head>
 <body id="bodyWrapper">
-    <div class="hide-page-load"></div>
+    <div id="pageLoader">Loading...</div>
     @await Html.PartialAsync("_NavigationPartial")
+    @await Html.PartialAsync("_Alerts")
     <div class="container body-content">
         @RenderBody()
         <footer> 
