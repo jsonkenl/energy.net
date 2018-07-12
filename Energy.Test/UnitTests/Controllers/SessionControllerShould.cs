@@ -17,8 +17,8 @@ namespace Energy.Test
 {
     public class SessionControllerShould
     {
-        private string _validPassword;
-        private string _invalidPassword;
+        private const string ValidPassword = "validPassword1!";
+        private const string InvalidPassword = "invalidPassword1!";
         private Mock<IEmployeeRepository> _mockEmployeeRepo;
         private Mock<IAdministratorRepository> _mockAdminRepo;
         private Mock<IOptions<ApplicationOptions>> _mockAppSettings;
@@ -27,8 +27,6 @@ namespace Energy.Test
 
         public SessionControllerShould()
         {
-            _validPassword = "validPassword1!";
-            _invalidPassword = "invalidPassword1!";
             _mockTempData = new Mock<ITempDataDictionary>();
             _mockEmployeeRepo = new Mock<IEmployeeRepository>();
             _mockAdminRepo = new Mock<IAdministratorRepository>();
@@ -61,7 +59,7 @@ namespace Energy.Test
             var loginModel = new LoginViewModel()
             {
                 Email = _options.AdministratorEmail,
-                Password = _validPassword
+                Password = ValidPassword
             };
 
             IActionResult result = await sut.Login(loginModel);
@@ -78,7 +76,7 @@ namespace Energy.Test
             var loginModel = new LoginViewModel()
             {
                 Email = _options.AdministratorEmail,
-                Password = _invalidPassword
+                Password = InvalidPassword
             };
 
             IActionResult result = await sut.Login(loginModel);
@@ -105,7 +103,7 @@ namespace Energy.Test
             var loginModel = new LoginViewModel()
             {
                 Email = _options.AdministratorEmail,
-                Password = _validPassword
+                Password = ValidPassword
             };
 
             await sut.Login(loginModel);
@@ -131,7 +129,7 @@ namespace Energy.Test
         {
             var admin = new Administrator
             {
-                HashedPassword = BCrypt.Net.BCrypt.HashPassword(_validPassword)
+                HashedPassword = BCrypt.Net.BCrypt.HashPassword(ValidPassword)
             };
 
             _mockAdminRepo.Setup(x => x.Get()).Returns(admin);

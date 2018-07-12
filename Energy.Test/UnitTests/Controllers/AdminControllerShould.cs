@@ -97,8 +97,12 @@ namespace Energy.Test.UnitTests.Controllers
             Assert.True(viewResult.ViewData.ModelState.ErrorCount == 1);
         }
 
+        
+
         private bool IsInvalid(string password)
-        {
+        { 
+            // Passwords must be between 8 and 50 characters and contain at least 3 of the following: 
+            // upper case (A-Z), lower case (a-z), number(0-9) and special character(e.g. !@#$%^&*)
             var option1 = "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])";
             var option2 = "(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])";
             var option3 = "(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])";
