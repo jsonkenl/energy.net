@@ -1,19 +1,19 @@
 ﻿using Energy.Core;
 using Energy.Core.Interfaces;
+using Energy.Net.Features.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace Energy.Net.Features.Employees
 {
-    public class EmployeesController : Controller
+    public class EmployeesController : ApplicationController 
     {
-        private ApplicationOptions _options;
         private IEmployeeRepository _employeeRepo;
 
         public EmployeesController(IOptions<ApplicationOptions> options,
                                     IEmployeeRepository employeeRepository)
+            : base(options)
         {
-            _options = options.Value;
             _employeeRepo = employeeRepository;
         }
 
@@ -22,7 +22,7 @@ namespace Energy.Net.Features.Employees
         {
             var employee = _employeeRepo.GetByEmail("EnergyAdmin@EnergyCo.net");
 
-            ViewData["AdminDn"] = _options.AdministratorDistinguishedName;
+            ViewData["AdminDn"] = Options.AdministratorDistinguishedName;
             ViewData["Employee"] = employee;
 
             return View();

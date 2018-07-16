@@ -1,0 +1,4 @@
+- Added CompanyName, SiteName and GenericEmail fields to ApplicationOptions and implemented it within the app
+- Created ApplicationController class for passing data to view master pages and refactored all other controllers
+- Created README file
+- Misc minor refactoring

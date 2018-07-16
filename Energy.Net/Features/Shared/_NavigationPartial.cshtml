@@ -1,4 +1,10 @@
-﻿<nav id="navMain" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+﻿@using Energy.Core;
+
+@{ 
+    ApplicationOptions _options = ViewData["Options"] as ApplicationOptions;
+}
+
+<nav id="navMain" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <a class="navbar-brand" asp-controller="Home" asp-action="Index">
         @{
             if (ViewData["Header"] != null)
@@ -8,7 +14,7 @@
             else
             {
                 <i class="fas fa-burn fa-2x"></i>
-                <span id="logoText">Energy.NET</span>
+                <span id="logoText">@_options.SiteName</span>
             }
         }
     </a>

@@ -1,26 +1,25 @@
 ﻿using Energy.Core;
 using Energy.Core.Interfaces;
+using Energy.Net.Features.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace Energy.Net.Features.Admin
 {
-    public class AdminController : Controller
+    public class AdminController : ApplicationController 
     {
-        private ApplicationOptions _options;
         private IAdministratorRepository _adminRepo;
 
         public AdminController(IOptions<ApplicationOptions> options,
                                 IAdministratorRepository administratorRepository)
+            : base(options)
         {
-            _options = options.Value;
             _adminRepo = administratorRepository;
         }
 
         [HttpGet]
         public IActionResult CreatePassword()
         {
-            ViewData["AdminEmail"] = _options.AdministratorEmail;
             return View();
         }
 
@@ -41,7 +40,6 @@ namespace Energy.Net.Features.Admin
 
                 return RedirectToAction("Index", "Home");
             }
-            ViewData["AdminEmail"] = _options.AdministratorEmail;
             TempData["WarningAlert"] = "Oh snap! Unable to save password."; 
             return View();
         }

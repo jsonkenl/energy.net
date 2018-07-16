@@ -1,6 +1,8 @@
-﻿@{
+﻿@using Energy.Core
+
+@{
     ViewData["Title"] = "401";
-    string _adminEmail = ViewData["AdminEmail"] as string;
+    ApplicationOptions _options = ViewData["Options"] as ApplicationOptions;
 }
 
 <div class="container">
@@ -23,5 +25,5 @@
     <div class="forbidden-img">
         <img src="~/images/unauthorized.jpg" />
     </div>
-    <h5 class="forbidden-contact text-center">Please <a href='@string.Format("mailto:{0}?subject=Energy%2ENet%20User%20Access%20Issue", _adminEmail)'>contact</a> the site administrator if you feel you have reached this message in error.</h5>
+    <h5 class="forbidden-contact text-center">Please <a href='@string.Format("mailto:{0}?subject={1}%20User%20Access%20Issue", _options.AdministratorEmail, _options.SiteName)'>contact</a> the site administrator if you feel you have reached this message in error.</h5>
 </div>

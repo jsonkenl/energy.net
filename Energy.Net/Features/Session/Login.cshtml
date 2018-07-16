@@ -1,13 +1,14 @@
-﻿@model LoginViewModel
+﻿@using Energy.Core
+@model LoginViewModel
 
 @{
     ViewData["Title"] = "Employee Login";
-    string _adminEmail = ViewData["AdminEmail"] as string;
+    ApplicationOptions _options = ViewData["Options"] as ApplicationOptions; 
 }
 
 <div id="loginWrapper" class="container">
     <div class="row justify-content-center">
-        <h1 class="text-center login-title">Sign in to Energy.Net with your Windows Password</h1>
+        <h1 class="text-center login-title">Sign in to @_options.SiteName with your Windows Password</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -17,7 +18,7 @@
                 <form class="form-signin" method="post" asp-antiforgery="true">
                     <div class="text-danger" asp-validation-summary="All"></div>
                     <div>
-                        <input class="form-control" asp-for="Email" placeholder="username@EnergyCo.net" required />
+                        <input class="form-control" asp-for="Email" placeholder="@_options.GenericEmail" required />
                     </div>
                     <div>
                         <input class="form-control" asp-for="Password" placeholder="password" required />
@@ -42,17 +43,17 @@
                     <h3>Login Instructions</h3>
                     <br />
                     <p>
-                        Energy.Net requires users to be authenticated in order to access certain areas of the site. Access is determined based on the role
+                        @_options.SiteName requires users to be authenticated in order to access certain areas of the site. Access is determined based on the role
                         that is assigned to the user by the administrator.
                     </p>
                     <p>
-                        First, enter the 'username' in the first box which is the EnergyCo email address of the user (i.e. username@energyco.net).
-                        Second, enter the user's password into the second box which is the same password that is used to log the user into their EnergyCo
+                        First, enter the 'username' in the first box which is the @_options.CompanyName email address of the user (i.e. @_options.GenericEmail).
+                        Second, enter the user's password into the second box which is the same password that is used to log the user into their @_options.CompanyName
                         assigned Windows computer. Finally, click on the 'Login' button to proceed.
                     </p>
                     <p>
-                        Please <a href='@string.Format("mailto:{0}?subject=Energy%2ENet%20Login%20Issue", _adminEmail)'>contact the site administrator</a>
-                        if you do not have a EnergyCo assigned email address, feel you have not been assigned the proper role for access rights or
+                        Please <a href='@string.Format("mailto:{0}?subject={1}%20Login%20Issue", _options.AdministratorEmail, _options.SiteName)'>contact the site administrator</a>
+                        if you do not have an @_options.CompanyName assigned email address, feel you have not been assigned the proper role for access rights or
                         have any other issues logging into the site.
                     </p>
                 </div>

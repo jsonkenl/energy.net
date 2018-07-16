@@ -8,12 +8,12 @@ using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Energy.Net.Features.Shared;
 
 namespace Energy.Net.Features.Session
 {
-    public class SessionController : Controller
+    public class SessionController : ApplicationController
     {
-        private readonly ApplicationOptions _options;
         private readonly IAdministratorRepository _adminRepo;
         private readonly IEmployeeRepository _employeeRepo;
         private readonly Ldap _authentication;
@@ -21,17 +21,16 @@ namespace Energy.Net.Features.Session
         public SessionController(IOptions<ApplicationOptions> options,
                                     IEmployeeRepository employeeRepository,
                                     IAdministratorRepository administratorRepository)
+            : base(options)
         {
-            _options = options.Value;
             _employeeRepo = employeeRepository;
             _adminRepo = administratorRepository;
-            _authentication = new Ldap(_options, _adminRepo.Get());
+            _authentication = new Ldap(Options, _adminRepo.Get());
         }
 
         [HttpGet]
         public IActionResult Login()
         {
-            ViewData["AdminEmail"] = _options.AdministratorEmail;  
             return View();
         }
 
@@ -79,7 +78,6 @@ namespace Energy.Net.Features.Session
         [HttpGet]
         public IActionResult Forbidden()
         {
-            ViewData["AdminEmail"] = _options.AdministratorEmail;  
             return View();
         }
 
